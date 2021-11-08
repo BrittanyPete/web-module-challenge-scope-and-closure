@@ -98,18 +98,24 @@ Use the finalScore function below to do the following:
 //create object
 //return object with total score and the innings played
 
-function finalScore(inningcb, totalInningscb){
-  
+function finalScore(inningcb, number){
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for (let i = 0; i < number; i++) {
+    homeScore = homeScore + inningcb();
+    awayScore = awayScore + inningcb();
+  }
+
+
   return {
-    Home: inningcb(),
-    Away: inningcb()
+    "Home": homeScore,
+    "Away": awayScore
   };
-
-
 
 }
 
-console.log('Task 3:', finalScore(inning, 5))
+console.log('Task 3:', finalScore(inning, 9))
 
 
 
@@ -120,9 +126,13 @@ Use the getInningScore() function below to do the following:
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
 function getInningScore(inningcb) {
-
-
+  return {
+    'Home': inningcb(),
+    'Away': inningcb()
+};
 }
+console.log('Task 4:', getInningScore(inning))
+
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -166,9 +176,28 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+function scoreboard(getInningScore, inningcb, number) {
+  const endScore = [];
+
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for (let i = 0; i < number; i++) {
+    const currentScore = getInningScore(inningcb);
+    homeScore = homeScore + currentScore.Home;
+    awayScore = awayScore + currentScore.Away;
+    endScore.push(`Inning ${i+1}: Home ${homeScore} - Away ${awayScore}`);
+  }
+  return endScore;
+  if (homeScore === awayScore) {
+    return `This game will require extra innings: Home ${homeScore} Away ${awayScore}`
+  } else {
+    return `Final Score: Home ${homeScore} - Away ${awayScore}`
+  }
 }
+
+console.log('Task 5:', scoreboard(getInningScore, inning, 9))
 
 
 
