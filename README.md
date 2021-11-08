@@ -61,6 +61,7 @@ You will be running your tests in one terminal and debugging in the other. As yo
 Edit the `ReadMe` file with your answers to the questions below.
 
 1. In your own words, define closure (1-2 sentences).
+  Closure is when a function that is inside another function reaches outside of itself into the outer function to access a value. 
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -82,8 +83,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  Closure is happening in the console.log when we reference ${name}. The console.log is in the inner function, and the name is the argument that is entered in in the outer function.
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  dansRoll is always going to equal personalDice(). The name that is inside the parentheses of personalDice() can change. It's always going to give you "name rolled a number" and that number is going to change every time you run the code.
 c. What is the lexical scope of `newRoll`? 
+  newRoll can access anything else inside of personalDice, but personalDice cannot access anything inside of newRoll. 
 
 
 ### Task 3 - Stretch Goals
