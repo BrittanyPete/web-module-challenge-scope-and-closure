@@ -186,18 +186,23 @@ function scoreboard(getInningScore, inningcb, number) {
   for (let i = 0; i < number; i++) {
     const currentScore = getInningScore(inningcb);
     homeScore = homeScore + currentScore.Home;
-    awayScore = awayScore + currentScore.Away;
+    awayScore = homeScore + currentScore.Away;
     endScore.push(`Inning ${i+1}: Home ${homeScore} - Away ${awayScore}`);
   }
-  return endScore;
+
   if (homeScore === awayScore) {
-    return `This game will require extra innings: Home ${homeScore} Away ${awayScore}`
+    endScore.push(`This game will require extra innings: Home ${homeScore} - Away ${awayScore}`);
   } else {
-    return `Final Score: Home ${homeScore} - Away ${awayScore}`
+    endScore.push(`Final Score: Home ${homeScore} - Away ${awayScore}`);
   }
+
+
+  return endScore;
 }
 
 console.log('Task 5:', scoreboard(getInningScore, inning, 9))
+
+
 
 
 
