@@ -177,17 +177,17 @@ Use the scoreboard function below to do the following:
   */
 
 
-function scoreboard(getInningScore, inningcb, number) {
+function scoreboard(inningScoreCB, inningcb, number) {
   const endScore = [];
 
   let homeScore = 0;
   let awayScore = 0;
 
   for (let i = 0; i < number; i++) {
-    const currentScore = getInningScore(inningcb);
+    const currentScore = inningScoreCB(inningcb);
     homeScore = homeScore + currentScore.Home;
     awayScore = homeScore + currentScore.Away;
-    endScore.push(`Inning ${i+1}: Home ${homeScore} - Away ${awayScore}`);
+    endScore.push(`Inning ${i+1}: Home ${currentScore.Home} - Away ${currentScore.Away}`);
   }
 
   if (homeScore === awayScore) {
